@@ -1,5 +1,6 @@
+import random
 import sys
-from code.Const import C_WHITE, WIND_HEIGHT, FPS_HEIGHT
+from code.Const import C_WHITE, WIND_HEIGHT, FPS_HEIGHT, MENU_OPTION, EVENT_ENEMY
 
 import pygame
 from pygame import Surface
@@ -15,6 +16,10 @@ class Level:
         self.game_mode = game_mode
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
+        self.entity_list.append(EntityFactory.get_entity('Player1'))
+        if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
+            self.entity_list.append(EntityFactory.get_entity('Player2'))
+        pygame.time.set_timer(EVENT_ENEMY, 4000)
 
     def run(self):
         running = True
@@ -26,6 +31,9 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == EVENT_ENEMY:
+                    choice = random.choice(('Enemy1', 'Enemy2'))
+                    self.entity_list.append(EntityFactory.get_entity(choice))
 
             self.window.fill((0, 0, 0))
 
