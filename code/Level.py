@@ -7,6 +7,7 @@ from pygame import Surface
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
+from code.EntityMediator import EntityMediator
 
 
 class Level:
@@ -51,6 +52,9 @@ class Level:
                 text_color=C_WHITE,
                 text_pos=(10, FPS_HEIGHT - 35)
             )
+            pygame.display.flip()
+            EntityMediator.verify_collision(entity_list=self.entity_list)
+            EntityMediator.verify_health(entity_list=self.entity_list)
 
 
         pass
@@ -61,4 +65,4 @@ class Level:
             text_surf = text_font.render(text, True, text_color).convert_alpha()
             text_rect = text_surf.get_rect(topleft=text_pos)
             self.window.blit(text_surf, text_rect)
-            pygame.display.flip()
+
