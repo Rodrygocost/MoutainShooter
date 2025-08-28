@@ -67,6 +67,15 @@ ENTITY_SHOT_DELAY = {
     'Enemy2': 200,
 }
 
+# G
+GAME_OVER_FONTS = {
+    'size01': 22,
+    'size02': 14,
+    'font01': 'Lucida Sans Typewriter',
+    'c-text': (255, 0, 0),
+    'c-text02': (173, 216, 230)
+}
+
 # P
 PLAYER_KEY_UP = {'Player1': pygame.K_UP, 'Player2': pygame.K_w}
 PLAYER_KEY_DOWN = {'Player1': pygame.K_DOWN, 'Player2': pygame.K_s}
